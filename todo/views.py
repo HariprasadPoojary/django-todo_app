@@ -69,5 +69,10 @@ def task_update(request, id):
 
 @api_view(["DELETE"])
 def task_delete(request, id):
-    pass
-    # My Changes in local repo
+    try:
+        task = Todo.objects.get(id=id)
+    except Todo.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    task.delete()
+    return Response("Item Deteled",status=status.HTTP_204_NO_CONTENT)
