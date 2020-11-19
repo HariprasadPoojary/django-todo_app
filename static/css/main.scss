@@ -1,0 +1,61 @@
+// reset
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@import "variables";
+@import "utilities";
+
+body {
+	font-family: $main-font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $heading-font;
+}
+a {
+	text-decoration: none;
+}
+
+// Logo
+.logo {
+	font-family: $logo-font;
+	font-size: $logo-font-size;
+}
+.username {
+	color: coral;
+	margin-right: 10px;
+}
+.btn {
+	border: 0.5px transparent solid;
+	border-radius: 3px;
+	background-color: #f3f3f3;
+	color: black;
+	padding: 0px 4px;
+	transition: color, background-color 0.5s ease;
+	&:hover {
+		color: #f3f3f3;
+		background-color: #333;
+	}
+}
+
+.main-navbar {
+	display: flex;
+	justify-content: space-between;
+	justify-items: center;
+	padding: 1rem 0;
+	.navbar {
+		display: flex;
+		justify-content: space-between;
+		justify-items: center;
+		font-size: $heading-font-size;
+		padding: 1rem 0;
+	}
+}

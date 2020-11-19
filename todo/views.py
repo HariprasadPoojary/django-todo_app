@@ -9,7 +9,8 @@ from .serializers import TodoSerializer
 
 # Create your views here.
 def home(request):
-    return HttpResponse("This is the home page")
+    context = {}
+    return render(request, "todo/index.html", context)
 
 
 @api_view(["GET"])
@@ -75,4 +76,4 @@ def task_delete(request, id):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     task.delete()
-    return Response("Item Deteled",status=status.HTTP_204_NO_CONTENT)
+    return Response("Item Deteled", status=status.HTTP_204_NO_CONTENT)

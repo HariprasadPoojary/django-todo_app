@@ -1,1 +1,126 @@
-/* No CSS *//*# sourceMappingURL=main.css.map */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0.15rem;
+}
+
+.container-large {
+  width: 1280px;
+}
+
+.container-medium {
+  width: 960px;
+}
+
+.container-small {
+  width: 500px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.py-1 {
+  padding: 1rem 0;
+}
+
+.py-2 {
+  padding: 2rem 0;
+}
+
+.py-3 {
+  padding: 3rem 0;
+}
+
+.py-4 {
+  padding: 4rem 0;
+}
+
+.my-1 {
+  margin: 1rem 0;
+}
+
+.my-2 {
+  margin: 2rem 0;
+}
+
+.my-3 {
+  margin: 3rem 0;
+}
+
+.my-4 {
+  margin: 4rem 0;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  font-family: "Goldman", cursive;
+  font-size: 3rem;
+}
+
+.username {
+  color: coral;
+  margin-right: 10px;
+}
+
+.btn {
+  border: 0.5px transparent solid;
+  border-radius: 3px;
+  background-color: #f3f3f3;
+  color: black;
+  padding: 0px 4px;
+  -webkit-transition: color, background-color 0.5s ease;
+  transition: color, background-color 0.5s ease;
+}
+
+.btn:hover {
+  color: #f3f3f3;
+  background-color: #333;
+}
+
+.main-navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  justify-items: center;
+  padding: 1rem 0;
+}
+
+.main-navbar .navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  justify-items: center;
+  font-size: 1.3rem;
+  padding: 1rem 0;
+}
+/*# sourceMappingURL=main.css.map */
