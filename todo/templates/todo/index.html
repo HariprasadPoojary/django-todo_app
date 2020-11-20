@@ -4,13 +4,15 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link rel="preload" href="https://fonts.gstatic.com" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Goldman:wght@700&family=Noto+Sans+JP:wght@500&family=Nunito+Sans&display=swap"
 			rel="stylesheet"
 		/>
+		<script
+			src="https://kit.fontawesome.com/5cec223499.js"
+			crossorigin="anonymous"
+		></script>
 		<title>Todo App</title>
 		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
 	</head>
@@ -23,19 +25,261 @@
 						Hello,
 						<a class="username" href="#">Username</a>
 					</div>
-					<a href="#" class="btn logout">Logout</a>
+					<a href="#" class="btn">Logout</a>
 				</div>
 			</nav>
 		</header>
 		<main>
-			<div class="container container-medium">
-				<div id="in-progress" class="box">
-					<div class="enter-task">
-						<form action=""></form>
+			<div id="main-todo" class="container container-medium">
+				<section id="in-progress">
+					<div class="box box-ip py-3">
+						<div class="enter-task">
+							<form action="">
+								<label for="get-task">Enter Task </label>
+								<input
+									type="text"
+									name="get-task"
+									class="enter-task"
+								/>
+								<input
+									type="submit"
+									class="btn"
+									value="Submit"
+								/>
+							</form>
+						</div>
+						<div class="heading-main">
+							<h3>In Progress</h3>
+							<div class="bottom-line"></div>
+						</div>
+						<div class="box-tasks">
+							<table class="box-tasks-data">
+								<thead>
+									<tr>
+										<th>Task Name</th>
+										<th colspan="2">Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Drink Water</td>
+										<td class="drop-option">
+											Update<i
+												class="fas fa-angle-down"
+											></i>
+											<ul>
+												<li>
+													<button
+														class="status-update"
+													>
+														Pending
+													</button>
+												</li>
+												<li>
+													<button
+														class="status-update"
+													>
+														Completed
+													</button>
+												</li>
+											</ul>
+										</td>
+										<td>
+											<button class="btn task-delete">
+												Delete
+											</button>
+										</td>
+									</tr>
+									<tr>
+										<td>Study</td>
+										<td class="drop-option">
+											Update<i
+												class="fas fa-angle-down"
+											></i>
+											<ul>
+												<li>
+													<button
+														class="status-update"
+													>
+														Pending
+													</button>
+												</li>
+												<li>
+													<button
+														class="status-update"
+													>
+														Completed
+													</button>
+												</li>
+											</ul>
+										</td>
+										<td>
+											<button class="btn task-delete">
+												Delete
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
-				</div>
-				<div id="pending" class="box"></div>
-				<div id="completed" class="box"></div>
+				</section>
+				<section id="pending">
+					<div class="box box-ip py-3">
+						<div class="heading-main">
+							<h3>Pending</h3>
+							<div class="bottom-line"></div>
+						</div>
+						<div class="box-tasks">
+							<table class="box-tasks-data">
+								<thead>
+									<tr>
+										<th>Task Name</th>
+										<th colspan="2">Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Drink Water</td>
+										<td class="drop-option">
+											Update<i
+												class="fas fa-angle-down"
+											></i>
+											<ul>
+												<li>
+													<button
+														class="status-update"
+													>
+														In Progress
+													</button>
+												</li>
+												<li>
+													<button
+														class="status-update"
+													>
+														Completed
+													</button>
+												</li>
+											</ul>
+										</td>
+										<td>
+											<button class="btn task-delete">
+												Delete
+											</button>
+										</td>
+									</tr>
+									<tr>
+										<td>Study</td>
+										<td class="drop-option">
+											Update<i
+												class="fas fa-angle-down"
+											></i>
+											<ul>
+												<li>
+													<button
+														class="status-update"
+													>
+														In Progress
+													</button>
+												</li>
+												<li>
+													<button
+														class="status-update"
+													>
+														Completed
+													</button>
+												</li>
+											</ul>
+										</td>
+										<td>
+											<button class="btn task-delete">
+												Delete
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+				<section id="completed">
+					<div class="box box-ip py-3">
+						<div class="heading-main">
+							<h3>Completed</h3>
+							<div class="bottom-line"></div>
+						</div>
+						<div class="box-tasks">
+							<table class="box-tasks-data">
+								<thead>
+									<tr>
+										<th>Task Name</th>
+										<th colspan="2">Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Drink Water</td>
+										<td class="drop-option">
+											Update<i
+												class="fas fa-angle-down"
+											></i>
+											<ul>
+												<li>
+													<button
+														class="status-update"
+													>
+														In Progress
+													</button>
+												</li>
+												<li>
+													<button
+														class="status-update"
+													>
+														Pending
+													</button>
+												</li>
+											</ul>
+										</td>
+										<td>
+											<button class="btn task-delete">
+												Delete
+											</button>
+										</td>
+									</tr>
+									<tr>
+										<td>Study</td>
+										<td class="drop-option">
+											Update<i
+												class="fas fa-angle-down"
+											></i>
+											<ul>
+												<li>
+													<button
+														class="status-update"
+													>
+														In Progress
+													</button>
+												</li>
+												<li>
+													<button
+														class="status-update"
+													>
+														Pending
+													</button>
+												</li>
+											</ul>
+										</td>
+										<td>
+											<button class="btn task-delete">
+												Delete
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
 			</div>
 		</main>
 	</body>

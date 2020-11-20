@@ -17,6 +17,46 @@
 	text-align: center;
 }
 
+.bottom-line {
+	width: 3rem;
+	height: 2px;
+	margin: 3px auto;
+	background-color: orangered;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+}
+
+.btn {
+	border: 0.5px black solid;
+	border-radius: 3px;
+	background-color: transparent;
+	color: black;
+	padding: 4px 4px;
+	transition: color, background-color 0.5s ease;
+	&:hover {
+		color: #f3f3f3;
+		background-color: #333;
+	}
+	font-family: $main-font;
+	font-size: medium;
+}
+
+// table defaults
+table {
+	border-collapse: collapse;
+	td,
+	th {
+		border: 1px solid #333;
+		text-align: left;
+		padding: 0.5rem;
+	}
+}
+
 .py-1 {
 	padding: 1rem 0;
 }

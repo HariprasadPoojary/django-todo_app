@@ -10,6 +10,11 @@
 
 body {
 	font-family: $main-font;
+	background-image: linear-gradient(
+		135deg,
+		hsla(191, 88%, 81%, 1) 0%,
+		hsla(260, 72%, 82%, 0.6) 85%
+	); // https://coolors.co/gradient-maker/a4e9f9-c5aef2
 }
 
 h1,
@@ -33,24 +38,12 @@ a {
 	color: coral;
 	margin-right: 10px;
 }
-.btn {
-	border: 0.5px transparent solid;
-	border-radius: 3px;
-	background-color: #f3f3f3;
-	color: black;
-	padding: 0px 4px;
-	transition: color, background-color 0.5s ease;
-	&:hover {
-		color: #f3f3f3;
-		background-color: #333;
-	}
-}
 
 .main-navbar {
 	display: flex;
 	justify-content: space-between;
 	justify-items: center;
-	padding: 1rem 0;
+	// padding: 1rem 0;
 	.navbar {
 		display: flex;
 		justify-content: space-between;
@@ -58,4 +51,86 @@ a {
 		font-size: $heading-font-size;
 		padding: 1rem 0;
 	}
+}
+
+// Layout
+#main-todo {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 1rem;
+	padding: 3rem 5rem;
+
+	#in-progress {
+		background-color: white;
+		grid-column: 1/3;
+		border-radius: 5px;
+		box-shadow: $table-shadow;
+	}
+	#pending {
+		background-color: white;
+		border-radius: 5px;
+		box-shadow: $table-shadow;
+	}
+	#completed {
+		background-color: white;
+		border-radius: 5px;
+		box-shadow: $table-shadow;
+	}
+}
+
+.box-tasks-data {
+	box-shadow: $table-shadow;
+	// Dropdown Status
+	tbody {
+		.drop-option {
+			ul {
+				display: none;
+				background-color: #fcbf49;
+				li {
+					list-style: none;
+					display: inline-block;
+					border-bottom: 1px dotted #333;
+				}
+			}
+			&:hover {
+				cursor: pointer;
+				ul {
+					display: block;
+					position: absolute;
+					width: 100px;
+					li {
+						display: block;
+					}
+				}
+			}
+		}
+		// Style
+		tr:nth-child(odd) {
+			background-color: #eee;
+		}
+		// Delete button
+		.task-delete {
+			border-color: transparent;
+			&:hover {
+				background-color: #d62828;
+			}
+		}
+	}
+}
+
+.status-update {
+	font-family: $main-font;
+	font-size: medium;
+	border-style: none;
+	background-color: transparent;
+	transition: color 0.5s ease;
+	padding: 3px 4px;
+	&:hover {
+		color: #f3f3f3;
+	}
+}
+
+.heading-main {
+	margin: 1rem 0;
 }
