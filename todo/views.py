@@ -13,6 +13,16 @@ def home(request):
     return render(request, "todo/index.html", context)
 
 
+def login(request):
+    context = {}
+    return render(request, "todo/login.html", context)
+
+
+def signup(request):
+    context = {}
+    return render(request, "todo/signup.html", context)
+
+
 @api_view(["GET"])
 def api_home(request):
     api_urls = {

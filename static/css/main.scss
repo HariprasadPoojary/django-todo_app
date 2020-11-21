@@ -62,35 +62,48 @@ a {
 	padding: 3rem 5rem;
 
 	#in-progress {
-		background-color: white;
 		grid-column: 1/3;
 		border-radius: 5px;
 		box-shadow: $table-shadow;
 	}
 	#pending {
-		background-color: white;
 		border-radius: 5px;
 		box-shadow: $table-shadow;
 	}
 	#completed {
-		background-color: white;
 		border-radius: 5px;
 		box-shadow: $table-shadow;
 	}
 }
 
+.box-task {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .box-tasks-data {
 	box-shadow: $table-shadow;
-	// Dropdown Status
+	// Status Dropdown
 	tbody {
 		.drop-option {
 			ul {
 				display: none;
 				background-color: #fcbf49;
+				box-shadow: $table-shadow;
 				li {
 					list-style: none;
 					display: inline-block;
 					border-bottom: 1px dotted #333;
+					button {
+						width: 110px;
+						padding: 5px 10px;
+					}
+					&,
+					button:hover {
+						cursor: pointer;
+					}
 				}
 			}
 			&:hover {
@@ -98,7 +111,6 @@ a {
 				ul {
 					display: block;
 					position: absolute;
-					width: 100px;
 					li {
 						display: block;
 					}
@@ -107,30 +119,74 @@ a {
 		}
 		// Style
 		tr:nth-child(odd) {
-			background-color: #eee;
+			background-color: #a8dadc;
 		}
-		// Delete button
-		.task-delete {
-			border-color: transparent;
-			&:hover {
-				background-color: #d62828;
-			}
+		tr:nth-child(even) {
+			background-color: #f1faee;
+		}
+	}
+	thead {
+		th {
+			background-color: #457b9d;
 		}
 	}
 }
 
+// Table
+.task-name {
+	width: 20rem;
+	&:hover {
+		color: #e63946;
+	}
+}
+
+// Update button
 .status-update {
 	font-family: $main-font;
 	font-size: medium;
 	border-style: none;
 	background-color: transparent;
-	transition: color 0.5s ease;
+	transition: color 0.5s ease-in-out;
 	padding: 3px 4px;
 	&:hover {
 		color: #f3f3f3;
 	}
 }
 
+// Delete button
+.task-delete {
+	border-color: transparent;
+	&:hover {
+		background-color: #d62828;
+	}
+}
+
 .heading-main {
 	margin: 1rem 0;
+}
+
+// Login Page
+
+.login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		width: 100%;
+		padding-bottom: 2rem;
+	}
+	.heading-main {
+		font-size: 2rem;
+	}
+	input {
+		width: 50%;
+		padding: 10px;
+		border-radius: 5px;
+	}
 }
