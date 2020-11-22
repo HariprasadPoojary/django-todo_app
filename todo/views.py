@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -8,29 +6,14 @@ from .models import Todo
 from .serializers import TodoSerializer
 
 # Create your views here.
-def home(request):
-    context = {}
-    return render(request, "todo/index.html", context)
-
-
-def login(request):
-    context = {}
-    return render(request, "todo/login.html", context)
-
-
-def signup(request):
-    context = {}
-    return render(request, "todo/signup.html", context)
-
-
 @api_view(["GET"])
 def api_home(request):
     api_urls = {
-        "List": "/task-list/",
-        "Detail View": "/task-detail/<str:pk>/",
-        "Create": "/task-create/",
-        "Update": "/task-update/<str:pk>/",
-        "Delete": "/task-delete/<str:pk>/",
+        "List": "/task_list/",
+        "Detail View": "/task_detail/<str:pk>/",
+        "Create": "/task_create/",
+        "Update": "/task_update/<str:pk>/",
+        "Delete": "/task_delete/<str:pk>/",
     }
     return Response(api_urls)
 
@@ -38,7 +21,7 @@ def api_home(request):
 @api_view(["GET"])
 def task_list(request):
     tasks = Todo.objects.all()
-    serializer = TodoSerializer(tasks)
+    serializer = TodoSerializer(tasks, many=True)
     return Response(serializer.data)
 
 
