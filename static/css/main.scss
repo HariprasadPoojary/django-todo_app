@@ -53,6 +53,23 @@ a {
 	}
 }
 
+// USer input
+.enter-task {
+	label {
+		font-size: large;
+		font-weight: 800;
+	}
+	input#get-task {
+		padding: 5px;
+		border-radius: 5px;
+		width: 20rem;
+		&.btn {
+			padding: 3.5px 3.5px;
+		}
+	}
+	padding-bottom: 10px;
+}
+
 // Layout
 #main-todo {
 	display: grid;
@@ -84,7 +101,11 @@ a {
 }
 
 .box-tasks-data {
-	box-shadow: $table-shadow;
+	// box-shadow: $table-shadow;
+	height: 13rem;
+	overflow: auto;
+	display: block;
+	background-color: transparent;
 	// Status Dropdown
 	tbody {
 		.drop-option {
@@ -165,9 +186,9 @@ a {
 	margin: 1rem 0;
 }
 
-// Login Page
+// Login/SignUp Page
 
-.login {
+.user-cred {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -188,5 +209,12 @@ a {
 		width: 50%;
 		padding: 10px;
 		border-radius: 5px;
+	}
+	input.btn {
+		background-color: #333;
+		color: #fff;
+		&:hover {
+			background-color: #444;
+		}
 	}
 }

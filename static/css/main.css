@@ -48,6 +48,7 @@
   transition: color, background-color 0.5s ease-in-out;
   font-family: "Nunito Sans", sans-serif;
   font-size: medium;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -159,6 +160,25 @@ a {
   padding: 1rem 0;
 }
 
+.enter-task {
+  padding-bottom: 10px;
+}
+
+.enter-task label {
+  font-size: large;
+  font-weight: 800;
+}
+
+.enter-task input#get-task {
+  padding: 5px;
+  border-radius: 5px;
+  width: 20rem;
+}
+
+.enter-task input#get-task.btn {
+  padding: 3.5px 3.5px;
+}
+
 #main-todo {
   display: -ms-grid;
   display: grid;
@@ -208,8 +228,10 @@ a {
 }
 
 .box-tasks-data {
-  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
+  height: 13rem;
+  overflow: auto;
+  display: block;
+  background-color: transparent;
 }
 
 .box-tasks-data tbody .drop-option ul {
@@ -294,7 +316,7 @@ a {
   margin: 1rem 0;
 }
 
-.login {
+.user-cred {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -310,7 +332,7 @@ a {
           align-items: center;
 }
 
-.login form {
+.user-cred form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -329,13 +351,22 @@ a {
   padding-bottom: 2rem;
 }
 
-.login .heading-main {
+.user-cred .heading-main {
   font-size: 2rem;
 }
 
-.login input {
+.user-cred input {
   width: 50%;
   padding: 10px;
   border-radius: 5px;
+}
+
+.user-cred input.btn {
+  background-color: #333;
+  color: #fff;
+}
+
+.user-cred input.btn:hover {
+  background-color: #444;
 }
 /*# sourceMappingURL=main.css.map */

@@ -21,7 +21,7 @@
 			</nav>
 		</header>
 		<section class="container container-medium">
-			<div class="login py-3 my-1">
+			<div class="user-cred py-3 my-1">
 				<div class="heading-main">
 					<h3>Sign Up 👨🏽‍💼</h3>
 					<div class="bottom-line"></div>
@@ -52,13 +52,14 @@
 						id="su-password"
 						placeholder="Re-Enter Password"
 					/>
-					<input type="submit" value="Sign Up" />
+					<input type="submit" value="Sign Up" class="btn" />
 				</form>
-				<div class="sign-up">
+				<div class="option">
 					<small>Already have an account?</small>
 					<a href="{% url 'login' %}" class="btn">Login</a>
 				</div>
 			</div>
 		</section>
 	</body>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </html>
