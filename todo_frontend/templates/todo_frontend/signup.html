@@ -27,33 +27,22 @@
 					<div class="bottom-line"></div>
 				</div>
 				<form action="" method="post" class="conatiner-small">
-					{% csrf_token %}
-					<input
-						type="text"
-						name="username"
-						id="su-username"
-						placeholder="Enter Username"
-					/>
-					<input
-						type="email"
-						name="email"
-						id="su-email"
-						placeholder="Enter Email ID"
-					/>
-					<input
-						type="password"
-						name="password"
-						id="su-password"
-						placeholder="Enter Password"
-					/>
-					<input
-						type="password"
-						name="password"
-						id="su-password"
-						placeholder="Re-Enter Password"
-					/>
+					<!-- prettier-ignore -->
+					{% csrf_token %} 
+
+					{{form.username}}
+					
+					{{form.email}}
+					
+					{{form.password1}}
+
+					{{form.password2}}
+
 					<input type="submit" value="Sign Up" class="btn" />
 				</form>
+
+				{{form.errors}}
+
 				<div class="option">
 					<small>Already have an account?</small>
 					<a href="{% url 'login' %}" class="btn">Login</a>
@@ -61,6 +50,12 @@
 			</div>
 		</section>
 	</body>
+	<script>
+		const password1 = document.querySelector("#id_password1");
+		password1.placeholder = "Enter Password...";
+		const password2 = document.querySelector("#id_password2");
+		password2.placeholder = "Re-Enter Password...";
+	</script>
 	<script src="{% static 'js/main.js' %}"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </html>

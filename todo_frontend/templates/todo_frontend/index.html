@@ -18,9 +18,9 @@
 				<div class="navbar">
 					<div>
 						Hello 🙋🏽‍♂️,
-						<a class="username" href="#">Username</a>
+						<a class="username" href="#">{{request.user}}</a>
 					</div>
-					<a href="#" class="btn">Logout</a>
+					<a href="{% url 'logout' %}" class="btn">Logout</a>
 				</div>
 			</nav>
 		</header>

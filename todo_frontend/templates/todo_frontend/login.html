@@ -43,6 +43,12 @@
 					/>
 					<input type="submit" value="Login" class="btn" />
 				</form>
+				{% for message in messages %}
+				<div class="message-from-signup text-center">
+					<!-- prettier-ignore -->
+					{{message}}
+				</div>
+				{% endfor %}
 				<div class="option">
 					<small>Don't have an account?</small>
 					<a href="{% url 'signup' %}" class="btn">Sign Up</a>
