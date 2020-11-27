@@ -63,6 +63,10 @@ a {
 		padding: 5px;
 		border-radius: 5px;
 		width: 20rem;
+		&:focus {
+			outline: none;
+			border: 1px solid #ef233c;
+		}
 		&.btn {
 			padding: 3.5px 3.5px;
 		}
@@ -209,6 +213,10 @@ a {
 		width: 50%;
 		padding: 10px;
 		border-radius: 5px;
+		&:focus {
+			outline: none;
+			border: 1px solid #ef233c;
+		}
 	}
 	input.btn {
 		background-color: #333;

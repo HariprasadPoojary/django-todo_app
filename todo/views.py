@@ -9,24 +9,27 @@ from .serializers import TodoSerializer
 @api_view(["GET"])
 def api_home(request):
     api_urls = {
-        "List": "/task_list/",
-        "Detail View": "/task_detail/<str:pk>/",
+        "List": "/task_list/custid",
+        "Detail View": "/task_detail/taskid/",
         "Create": "/task_create/",
-        "Update": "/task_update/<str:pk>/",
-        "Delete": "/task_delete/<str:pk>/",
+        "Update": "/task_update/taskid/",
+        "Delete": "/task_delete/taskid/",
     }
     return Response(api_urls)
 
 
 @api_view(["GET"])
-def task_list(request):
-    tasks = Todo.objects.all()
+def task_list(request, custid, format=None):
+    try:
+        tasks = Todo.objects.filter(user_id=int(custid))
+    except Todo.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
     serializer = TodoSerializer(tasks, many=True)
     return Response(serializer.data)
 
 
 @api_view(["GET"])
-def task_view(request, id):
+def task_view(request, id, format=None):
     try:
         task = Todo.objects.get(id=id)
     except Todo.DoesNotExist:

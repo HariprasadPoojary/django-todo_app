@@ -44,8 +44,10 @@
   background-color: transparent;
   color: black;
   padding: 4px 4px;
-  -webkit-transition: color, background-color 0.5s ease-in-out;
-  transition: color, background-color 0.5s ease-in-out;
+  -webkit-transition: color, -webkit-transform background-color 0.5s ease-in-out;
+  transition: color, -webkit-transform background-color 0.5s ease-in-out;
+  transition: color, transform background-color 0.5s ease-in-out;
+  transition: color, transform background-color 0.5s ease-in-out, -webkit-transform background-color 0.5s ease-in-out;
   font-family: "Nunito Sans", sans-serif;
   font-size: medium;
   cursor: pointer;
@@ -54,6 +56,15 @@
 .btn:hover {
   color: #f3f3f3;
   background-color: #333;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
 }
 
 a:hover,
@@ -175,6 +186,11 @@ a {
   padding: 5px;
   border-radius: 5px;
   width: 20rem;
+}
+
+.enter-task input#get-task:focus {
+  outline: none;
+  border: 1px solid #ef233c;
 }
 
 .enter-task input#get-task.btn {
@@ -361,6 +377,11 @@ a {
   width: 50%;
   padding: 10px;
   border-radius: 5px;
+}
+
+.user-cred input:focus {
+  outline: none;
+  border: 1px solid #ef233c;
 }
 
 .user-cred input.btn {

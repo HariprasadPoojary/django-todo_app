@@ -1,3 +1,5 @@
 **/__pycache__/
 .vscode/
 static/css/main.css.map
+pass.txt
+node_modules
