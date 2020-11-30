@@ -42,7 +42,7 @@ def task_view(request, id, format=None):
 @api_view(["POST"])
 def task_create(request):
     serializer = TodoSerializer(data=request.data)
-    if serializer.is_valid():
+    if serializer.is_valid() and request.data.get("user") is not None:
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:

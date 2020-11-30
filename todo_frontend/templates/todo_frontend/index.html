@@ -5,6 +5,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Todo App</title>
+		<link rel="preload" href="https://fonts.gstatic.com" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Goldman:wght@700&family=Noto+Sans+JP:wght@500&family=Nunito+Sans&display=swap"
 			rel="stylesheet"
@@ -46,7 +47,7 @@
 									<th colspan="2">Status</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="ip-rows">
 								<!-- <tr id="1">
 									<td class="task-name">Drink Water</td>
 									<td class="drop-option">
@@ -89,7 +90,7 @@
 									<th colspan="2">Status</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="p-rows">
 								<!-- <tr id="3">
 									<td class="task-name">Drink Water</td>
 									<td class="drop-option">
@@ -132,7 +133,7 @@
 									<th colspan="2">Status</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="c-rows">
 								<!-- <tr id="5">
 									<td class="task-name">Drink Water</td>
 									<td class="drop-option">
@@ -164,5 +165,8 @@
 		</main>
 	</body>
 	{{ username|json_script:"username" }}
-	<script src="{% static 'js/main.js' %}"></script>
+	<script type="module" src="{% static 'js/main.js' %}"></script>
+	<script type="module" src="{% static 'js/model.js' %}"></script>
+	<script type="module" src="{% static 'js/view.js' %}"></script>
+	<script type="module" src="{% static 'js/config.js' %}"></script>
 </html>
