@@ -50,9 +50,10 @@ def task_create(request):
 
 
 @api_view(["POST"])
-def task_update(request, id):
+def task_update(request):
     try:
-        task = Todo.objects.get(id=int(id))
+        id = request.data.get("id")
+        task = Todo.objects.get(id=id)
     except Todo.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
