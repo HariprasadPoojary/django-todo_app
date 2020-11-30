@@ -4,16 +4,23 @@ class TodoView {
 	#inProgressParentElement = document.querySelector("#ip-rows");
 	#completedParentElement = document.querySelector("#c-rows");
 	#pendingParentElement = document.querySelector("#p-rows");
+	#parentElement;
 	#data;
-	render(data) {
+	#state;
+	render(data, state) {
 		this.#data = data;
+		this.#state = state;
+		if (this.#state === "IP") {
+			this.#parentElement = this.#inProgressParentElement;
+		} else if (this.#state === "P") {
+			this.#parentElement = this.#pendingParentElement;
+		} else {
+			this.#parentElement = this.#completedParentElement;
+		}
 		this.#clear;
 		for (let task of this.#data) {
-			const markup = this.#generateMarkup(task);
-			this.#inProgressParentElement.insertAdjacentHTML(
-				"afterbegin",
-				markup
-			);
+			const markup = this.#generateMarkup(task, this.#state);
+			this.#parentElement.insertAdjacentHTML("afterbegin", markup);
 		}
 	}
 
@@ -24,34 +31,92 @@ class TodoView {
 	}
 
 	#clear() {
-		this.#inProgressParentElement.innerHTML = "";
+		this.#parentElement.innerHTML = "";
 	}
-	#generateMarkup(data) {
-		return `
-        <tr id="${data.id}">
-            <td class="task-name">${data.title}</td>
-            <td class="drop-option">
-                Update 🔽
-                <ul>
-                    <li>
-                        <button class="status-update">
-                            Pending
+	#generateMarkup(data, state) {
+		let markup = "";
+
+		if (state === "IP") {
+			markup = `
+                <tr id="${data.id}">
+                    <td class="task-name">${data.title}</td>
+                    <td class="drop-option">
+                        Update 🔽
+                        <ul>
+                            <li>
+                                <button class="status-update">
+                                    Pending
+                                </button>
+                            </li>
+                            <li>
+                                <button class="status-update">
+                                    Completed
+                                </button>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button class="btn task-delete">
+                            Delete
                         </button>
-                    </li>
-                    <li>
-                        <button class="status-update">
-                            Completed
+                    </td>
+                </tr>
+            `;
+		} else if (state === "P") {
+			markup = `
+                <tr id="${data.id}">
+                    <td class="task-name">${data.title}</td>
+                    <td class="drop-option">
+                        Update 🔽
+                        <ul>
+                            <li>
+                                <button class="status-update">
+                                    In Progress
+                                </button>
+                            </li>
+                            <li>
+                                <button class="status-update">
+                                    Completed
+                                </button>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button class="btn task-delete">
+                            Delete
                         </button>
-                    </li>
-                </ul>
-            </td>
-            <td>
-                <button class="btn task-delete">
-                    Delete
-                </button>
-            </td>
-    </tr>
-        `;
+                    </td>
+                </tr>
+            `;
+		} else {
+			markup = `
+                <tr id="${data.id}">
+                    <td class="task-name">${data.title}</td>
+                    <td class="drop-option">
+                        Update 🔽
+                        <ul>
+                            <li>
+                                <button class="status-update">
+                                    In Progress
+                                </button>
+                            </li>
+                            <li>
+                                <button class="status-update">
+                                    Pending
+                                </button>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button class="btn task-delete">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            `;
+		}
+
+		return markup;
 	}
 }
 

@@ -12,8 +12,12 @@ const allTasks = async () => {
 	//! Testing
 	console.log(model.state);
 
-	// render view
-	TodoView.render(model.state.inProgressTasks);
+	// render view In-Progress
+	TodoView.render(model.state.inProgressTasks, "IP");
+	// render view Pending
+	TodoView.render(model.state.pendingTasks, "P");
+	// render view In-Progress
+	TodoView.render(model.state.completedTasks, "C");
 };
 
 // Pass functions to view, to run on events
