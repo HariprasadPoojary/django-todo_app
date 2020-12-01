@@ -1,15 +1,21 @@
 "use strict";
 
 class TodoView {
+	// Table parent elements
 	#inProgressParentElement = document.querySelector("#ip-rows");
 	#completedParentElement = document.querySelector("#c-rows");
 	#pendingParentElement = document.querySelector("#p-rows");
 	#parentElement;
+	// Get input elements
+	#getTaskInput = document.querySelector("#get-task");
+	#submitTaskBtn = document.querySelector("#get-task-btn");
+
 	#data;
 	#state;
 	render(data, state) {
 		this.#data = data;
 		this.#state = state;
+		// Assign parent element based on state
 		if (this.#state === "IP") {
 			this.#parentElement = this.#inProgressParentElement;
 		} else if (this.#state === "P") {
@@ -18,6 +24,7 @@ class TodoView {
 			this.#parentElement = this.#completedParentElement;
 		}
 		this.#clear;
+		// Add all tasks to the DOM
 		for (let task of this.#data) {
 			const markup = this.#generateMarkup(task, this.#state);
 			this.#parentElement.insertAdjacentHTML("afterbegin", markup);
@@ -25,9 +32,15 @@ class TodoView {
 	}
 
 	// Run function passed from controller on event
-	addEventHandlerRender(handler) {
+	addPageLoadEventHandler(handler) {
 		// Listeners
+		//* Page Load
 		window.addEventListener("load", handler);
+		//* Submit Task
+
+		//* Update Task
+		// Delete
+		// Update
 	}
 
 	#clear() {
@@ -37,6 +50,7 @@ class TodoView {
 		let markup = "";
 
 		if (state === "IP") {
+			// In-Progress Task Element
 			markup = `
                 <tr id="${data.id}">
                     <td class="task-name">${data.title}</td>
@@ -63,6 +77,7 @@ class TodoView {
                 </tr>
             `;
 		} else if (state === "P") {
+			// Pending Task Element
 			markup = `
                 <tr id="${data.id}">
                     <td class="task-name">${data.title}</td>
@@ -89,6 +104,7 @@ class TodoView {
                 </tr>
             `;
 		} else {
+			// Completed Task Element
 			markup = `
                 <tr id="${data.id}">
                     <td class="task-name">${data.title}</td>

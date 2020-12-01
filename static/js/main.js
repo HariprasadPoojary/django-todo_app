@@ -22,7 +22,7 @@ const allTasks = async () => {
 
 // Pass functions to view, to run on events
 const init = () => {
-	TodoView.addEventHandlerRender(allTasks);
+	TodoView.addPageLoadEventHandler(allTasks);
 };
 // Run init
 init();
