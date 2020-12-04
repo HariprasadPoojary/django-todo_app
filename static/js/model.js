@@ -1,7 +1,5 @@
 "use strict";
-import { getJSON } from "./config.js";
-
-const api_url = "http://127.0.0.1:8000/api";
+import * as config from "./config.js";
 
 export const state = {
 	tasks: [],
@@ -12,7 +10,7 @@ export const state = {
 
 export const getTasks = async function (userId) {
 	try {
-		const data = await getJSON(`${api_url}/task_list/${userId}`);
+		const data = await config.getJSON(`${config.url}/task_list/${userId}`);
 
 		// Convert the values into new object without the user_id
 		for (let task of data) {

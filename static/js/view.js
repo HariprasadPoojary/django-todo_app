@@ -8,10 +8,11 @@ class TodoView {
 	#parentElement;
 	// Get input elements
 	#getTaskInput = document.querySelector("#get-task");
-	#submitTaskBtn = document.querySelector("#get-task-btn");
+	#submitTask = document.querySelector("#enter-task-form");
 
 	#data;
 	#state;
+	// Render Element
 	render(data, state) {
 		this.#data = data;
 		this.#state = state;
@@ -31,16 +32,39 @@ class TodoView {
 		}
 	}
 
+	// Get Input data of Task
+	getTaskTitle() {
+		return this.#getTaskInput.value;
+	}
+	// Clear input
+	clearInput() {
+		this.#getTaskInput.value = "";
+	}
 	// Run function passed from controller on event
-	addPageLoadEventHandler(handler) {
+	addHandlerPageLoad(handler) {
 		// Listeners
 		//* Page Load
 		window.addEventListener("load", handler);
-		//* Submit Task
+		console.log("Event listener load added");
+	}
 
-		//* Update Task
-		// Delete
-		// Update
+	addHandlerClickBtn(handler, action) {
+		if (action === "submit") {
+			//* Submit Task
+			this.#submitTask.addEventListener("submit", function (e) {
+				e.preventDefault();
+				handler();
+			});
+			console.log("Event Submit btn listener added");
+		} else if (action === "update") {
+			//* Update Task
+			//! this.#submitTaskBtn.addEventListener("click", handler);
+			console.log("Event Update btn listener added");
+		} else {
+			//* Delete Task
+			//! #submitTaskBtn.addEventListener("click", handler);
+			console.log("Event Delete btn listener added");
+		}
 	}
 
 	#clear() {
