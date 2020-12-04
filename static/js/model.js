@@ -10,7 +10,7 @@ export const state = {
 
 export const getTasks = async function (userId) {
 	try {
-		const data = await config.getJSON(`${config.url}/task_list/${userId}`);
+		const data = await config.sendAJAX(`${config.url}/task_list/${userId}`);
 
 		// Convert the values into new object without the user_id
 		for (let task of data) {
