@@ -1,7 +1,5 @@
 "use strict";
 
-export const url = "http://127.0.0.1:8000/api";
-
 //? Send AJAX request with fetch
 export const sendAJAX = async function (method, url, data, csrf) {
 	try {

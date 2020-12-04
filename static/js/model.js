@@ -1,6 +1,8 @@
 "use strict";
 import * as config from "./config.js";
 
+const url = "http://127.0.0.1:8000/api";
+
 export const state = {
 	tasks: [],
 	completedTasks: [],
@@ -10,10 +12,7 @@ export const state = {
 
 export const getTasks = async function (userId) {
 	try {
-		const data = await config.sendAJAX(
-			"GET",
-			`${config.url}/task_list/${userId}`
-		);
+		const data = await config.sendAJAX("GET", `${url}/task_list/${userId}`);
 
 		// Convert the values into new object without the user_id
 		for (let task of data) {
@@ -57,7 +56,7 @@ export const createTask = async function (title, username, csrf) {
 		// Send data
 		const data = await config.sendAJAX(
 			"POST",
-			`${config.url}/task_create/`,
+			`${url}/task_create/`,
 			todoItem,
 			csrf
 		);
