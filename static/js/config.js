@@ -2,24 +2,18 @@
 
 export const url = "http://127.0.0.1:8000/api";
 
-export const getJSON = async function (url) {
-	try {
-		const res = await fetch(url);
-		// Convert response to JavaScript object
-		const data = await res.json();
-		return data;
-	} catch (error) {
-		throw error;
-	}
-};
-
 //? Send AJAX request with fetch
-export const sendAJAX = async function (method, url, data) {
+export const sendAJAX = async function (method, url, data, csrf) {
 	try {
 		const res = await fetch(url, {
 			method: method,
 			body: JSON.stringify(data),
-			headers: data ? { "Content-Type": "application/json" } : {},
+			headers: data
+				? {
+						"Content-Type": "application/json",
+						"X-CSRFToken": csrf,
+				  }
+				: {},
 		});
 		if (res.status >= 400) {
 			// Convert response to JavaScript object
@@ -68,5 +62,19 @@ export const sendJSON = (method, url, data) => {
 		xhr.send(JSON.stringify(data));
 	});
 	return promise;
+};
+*/
+
+/*
+// Separate GET method
+export const getJSON = async function (url) {
+	try {
+		const res = await fetch(url);
+		// Convert response to JavaScript object
+		const data = await res.json();
+		return data;
+	} catch (error) {
+		throw error;
+	}
 };
 */

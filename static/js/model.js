@@ -10,7 +10,10 @@ export const state = {
 
 export const getTasks = async function (userId) {
 	try {
-		const data = await config.sendAJAX(`${config.url}/task_list/${userId}`);
+		const data = await config.sendAJAX(
+			"GET",
+			`${config.url}/task_list/${userId}`
+		);
 
 		// Convert the values into new object without the user_id
 		for (let task of data) {
@@ -37,7 +40,29 @@ export const getTasks = async function (userId) {
 			}
 		}
 	} catch (error) {
-		console.log(`${error} 💢💢`);
+		console.log(`getTasks ${error} 💢💢`);
+		throw error;
+	}
+};
+
+export const createTask = async function (title, username, csrf) {
+	// Data object
+	const todoItem = {
+		title: title,
+		state: "IP",
+		tag: "Important",
+		user: username,
+	};
+	try {
+		// Send data
+		const data = await config.sendAJAX(
+			"POST",
+			`${config.url}/task_create/`,
+			todoItem,
+			csrf
+		);
+	} catch (error) {
+		console.log(`createTask ${error} 💢💢`);
 		throw error;
 	}
 };

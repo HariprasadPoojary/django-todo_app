@@ -29,7 +29,8 @@
 			<section id="in-progress" class="box">
 				<div class="box-task py-3">
 					<div class="enter-task">
-						<form action="" id="enter-task-form">
+						<form action="" method="POST" id="enter-task-form">
+							{% csrf_token %}
 							<label for="get-task">Enter Task </label>
 							<input type="text" name="get-task" id="get-task" />
 							<input

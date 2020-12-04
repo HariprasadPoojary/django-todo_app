@@ -5,6 +5,7 @@ import * as config from "./config.js";
 
 // Get the value of customer_id from DJango
 const username = JSON.parse(document.querySelector("#username").textContent);
+const csrftoken = document.querySelector("[name=csrfmiddlewaretoken]").value;
 
 const allTasks = async () => {
 	// Get tasks for User
@@ -28,15 +29,9 @@ const addTask = async () => {
 	if (!todoTitle) return;
 	//! Test
 	console.log(todoTitle);
-	// Create request data
-	const data = {
-		title: todoTitle,
-		state: "IP",
-		tag: "Important",
-		user: username,
-	};
-	// Send data
-	await config.sendAJAX("POST", `${config.url}/task_create/`, data);
+	// Send Data to Django API
+	await model.createTask(todoTitle, username, csrftoken);
+
 	// Clear input
 	TodoView.clearInput();
 };
