@@ -42,11 +42,17 @@ const addTask = async () => {
 	allTasks();
 };
 
-const updateTask = (taskid, state) => {
-	console.log("Running updateTask func");
+const updateTask = async (taskid, state) => {
 	console.log(taskid + " " + state);
+	if (!taskid) return;
 	// Call function from model based on operation
-	// refresh the page
+	if (state === "D") {
+		// Delete Task
+		await model.deleteTask(taskid, csrftoken);
+	}
+	// Refresh the tables
+	model.refreshState();
+	allTasks();
 };
 
 // Pass functions to view, to run on events

@@ -65,8 +65,8 @@ export const createTask = async function (title, username, csrf) {
 		const data = await config.sendAJAX(
 			"POST",
 			`${url}/task_create/`,
-			todoItem,
-			csrf
+			csrf,
+			todoItem
 		);
 	} catch (error) {
 		console.log(`createTask ${error} 💢💢`);
@@ -74,7 +74,19 @@ export const createTask = async function (title, username, csrf) {
 	}
 };
 
-export const deleteTask = function () {};
+export const deleteTask = async function (id, csrf) {
+	try {
+		const data = await config.sendAJAX(
+			"DELETE",
+			`${url}/task_delete/${id}`,
+			csrf
+		);
+		return data;
+	} catch (error) {
+		console.log(`deleteTask ${error} 💢💢`);
+		throw error;
+	}
+};
 
 export const updateTask = function (id, title, username, csrf) {
 	// Data object

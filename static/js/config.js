@@ -1,17 +1,18 @@
 "use strict";
 
 //? Send AJAX request with fetch
-export const sendAJAX = async function (method, url, data, csrf) {
+export const sendAJAX = async function (method, url, csrf, data) {
 	try {
 		const res = await fetch(url, {
 			method: method,
 			body: JSON.stringify(data),
-			headers: data
-				? {
-						"Content-Type": "application/json",
-						"X-CSRFToken": csrf,
-				  }
-				: {},
+			headers:
+				method !== "GET"
+					? {
+							"Content-Type": "application/json",
+							"X-CSRFToken": csrf,
+					  }
+					: {},
 		});
 		if (res.status >= 400) {
 			// Convert response to JavaScript object
@@ -20,7 +21,8 @@ export const sendAJAX = async function (method, url, data, csrf) {
 			err.data = errResponse;
 			throw err;
 		}
-		const dataResponse = await res.json();
+		let dataResponse;
+		if (method !== "DELETE") dataResponse = await res.json();
 		console.log(dataResponse);
 		return dataResponse;
 	} catch (error) {
