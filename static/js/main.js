@@ -27,19 +27,33 @@ const addTask = async () => {
 	const todoTitle = TodoView.getTaskTitle();
 	// In case of empty string
 	if (!todoTitle) return;
+
 	//! Test
 	console.log(todoTitle);
+
 	// Send Data to Django API
 	await model.createTask(todoTitle, username, csrftoken);
 
 	// Clear input
 	TodoView.clearInput();
+
+	// Refresh the tables
+	model.refreshState();
+	allTasks();
+};
+
+const updateTask = (taskid, state) => {
+	console.log("Running updateTask func");
+	console.log(taskid + " " + state);
+	// Call function from model based on operation
+	// refresh the page
 };
 
 // Pass functions to view, to run on events
 const init = () => {
 	TodoView.addHandlerPageLoad(allTasks);
 	TodoView.addHandlerClickBtn(addTask, "submit");
+	TodoView.addHandlerClickBtn(updateTask, "update");
 };
 // Run init
 init();

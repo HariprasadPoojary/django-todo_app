@@ -5,11 +5,16 @@ class TodoView {
 	#inProgressParentElement = document.querySelector("#ip-rows");
 	#completedParentElement = document.querySelector("#c-rows");
 	#pendingParentElement = document.querySelector("#p-rows");
-	#parentElement;
+	#currentElement;
 	// Get input elements
 	#getTaskInput = document.querySelector("#get-task");
 	#submitTask = document.querySelector("#enter-task-form");
-
+	// List of Table sections
+	#tableSections = [
+		document.querySelector("#in-progress"),
+		document.querySelector("#pending"),
+		document.querySelector("#completed"),
+	];
 	#data;
 	#state;
 	// Render Element
@@ -18,17 +23,17 @@ class TodoView {
 		this.#state = state;
 		// Assign parent element based on state
 		if (this.#state === "IP") {
-			this.#parentElement = this.#inProgressParentElement;
+			this.#currentElement = this.#inProgressParentElement;
 		} else if (this.#state === "P") {
-			this.#parentElement = this.#pendingParentElement;
+			this.#currentElement = this.#pendingParentElement;
 		} else {
-			this.#parentElement = this.#completedParentElement;
+			this.#currentElement = this.#completedParentElement;
 		}
-		this.#clear;
+		this.#clear();
 		// Add all tasks to the DOM
 		for (let task of this.#data) {
 			const markup = this.#generateMarkup(task, this.#state);
-			this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+			this.#currentElement.insertAdjacentHTML("afterbegin", markup);
 		}
 	}
 
@@ -45,7 +50,6 @@ class TodoView {
 		// Listeners
 		//* Page Load
 		window.addEventListener("load", handler);
-		console.log("Event listener load added");
 	}
 
 	addHandlerClickBtn(handler, action) {
@@ -55,20 +59,36 @@ class TodoView {
 				e.preventDefault();
 				handler();
 			});
-			console.log("Event Submit btn listener added");
 		} else if (action === "update") {
 			//* Update Task
-			//! this.#submitTaskBtn.addEventListener("click", handler);
-			console.log("Event Update btn listener added");
-		} else {
-			//* Delete Task
-			//! #submitTaskBtn.addEventListener("click", handler);
-			console.log("Event Delete btn listener added");
+			for (let section of this.#tableSections) {
+				section.addEventListener("click", (e) => {
+					// Get Task id
+					const taskId = e.target.closest(".task-row").dataset.todoid;
+					let state;
+
+					// Determine button operation e.g update or delete
+					if (e.target.matches(".p, .p *")) {
+						state = "P"; // Pending
+					} else if (e.target.matches(".ip, .ip *")) {
+						state = "IP"; // In Progress
+					} else if (e.target.matches(".c, .c *")) {
+						state = "C"; // Complete
+					} else if (
+						e.target.matches(".task-delete, .task-delete *")
+					) {
+						state = "D"; // Delete
+					}
+
+					handler(taskId, state);
+				});
+			}
 		}
 	}
 
 	#clear() {
-		this.#parentElement.innerHTML = "";
+		this.#currentElement.innerHTML = "";
+		console.log("Table cleared " + this.#currentElement);
 	}
 	#generateMarkup(data, state) {
 		let markup = "";
@@ -76,18 +96,18 @@ class TodoView {
 		if (state === "IP") {
 			// In-Progress Task Element
 			markup = `
-                <tr id="${data.id}">
+                <tr class="task-row" data-todoid="${data.id}">
                     <td class="task-name">${data.title}</td>
                     <td class="drop-option">
                         Update 🔽
                         <ul>
                             <li>
-                                <button class="status-update">
+                                <button class="status-update p">
                                     Pending
                                 </button>
                             </li>
                             <li>
-                                <button class="status-update">
+                                <button class="status-update c">
                                     Completed
                                 </button>
                             </li>
@@ -103,18 +123,18 @@ class TodoView {
 		} else if (state === "P") {
 			// Pending Task Element
 			markup = `
-                <tr id="${data.id}">
+                <tr class="task-row" data-todoid="${data.id}">
                     <td class="task-name">${data.title}</td>
                     <td class="drop-option">
                         Update 🔽
                         <ul>
                             <li>
-                                <button class="status-update">
+                                <button class="status-update ip">
                                     In Progress
                                 </button>
                             </li>
                             <li>
-                                <button class="status-update">
+                                <button class="status-update c">
                                     Completed
                                 </button>
                             </li>
@@ -130,18 +150,18 @@ class TodoView {
 		} else {
 			// Completed Task Element
 			markup = `
-                <tr id="${data.id}">
+                <tr class="task-row" data-todoid="${data.id}">
                     <td class="task-name">${data.title}</td>
                     <td class="drop-option">
                         Update 🔽
                         <ul>
                             <li>
-                                <button class="status-update">
+                                <button class="status-update ip">
                                     In Progress
                                 </button>
                             </li>
                             <li>
-                                <button class="status-update">
+                                <button class="status-update p">
                                     Pending
                                 </button>
                             </li>

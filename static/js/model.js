@@ -3,11 +3,19 @@ import * as config from "./config.js";
 
 const url = "http://127.0.0.1:8000/api";
 
-export const state = {
+export let state = {
 	tasks: [],
 	completedTasks: [],
 	inProgressTasks: [],
 	pendingTasks: [],
+};
+export const refreshState = () => {
+	state = {
+		tasks: [],
+		completedTasks: [],
+		inProgressTasks: [],
+		pendingTasks: [],
+	};
 };
 
 export const getTasks = async function (userId) {
@@ -64,4 +72,17 @@ export const createTask = async function (title, username, csrf) {
 		console.log(`createTask ${error} 💢💢`);
 		throw error;
 	}
+};
+
+export const deleteTask = function () {};
+
+export const updateTask = function (id, title, username, csrf) {
+	// Data object
+	const todoItem = {
+		id: id,
+		title: title,
+		state: "IP",
+		tag: "Important",
+		user: username,
+	};
 };
