@@ -10,6 +10,7 @@ from .serializers import TodoSerializer
 def api_home(request):
     api_urls = {
         "List": "/task_list/custid",
+        "Customer's Task": "/task_list/custid/taskid/",
         "Detail View": "/task_detail/taskid/",
         "Create": "/task_create/",
         "Update": "/task_update/taskid/",
@@ -25,6 +26,20 @@ def task_list(request, custid, format=None):
     except Todo.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     serializer = TodoSerializer(tasks, many=True)
+    return Response(serializer.data)
+
+
+@api_view(["GET"])
+def task_list_id(request, custid, id, format=None):
+    try:
+        tasks = Todo.objects.filter(user_id=int(custid))
+        task = tasks.filter(id=id)
+        if task is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    except Todo.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = TodoSerializer(task, many=True)
     return Response(serializer.data)
 
 

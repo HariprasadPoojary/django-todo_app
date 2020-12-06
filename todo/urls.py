@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     path("", views.api_home, name="api_home"),
     path("task_list/<str:custid>", views.task_list, name="task_list"),
+    path("task_list/<str:custid>/<str:id>", views.task_list_id, name="task_list_id"),
     path("task_view/<str:id>/", views.task_view, name="task_view"),
     path("task_create/", views.task_create, name="task_create"),
     path("task_update/", views.task_update, name="task_update"),

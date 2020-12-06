@@ -49,6 +49,9 @@ const updateTask = async (taskid, state) => {
 	if (state === "D") {
 		// Delete Task
 		await model.deleteTask(taskid, csrftoken);
+	} else if (state === "IP") {
+		// Update - In-Progress
+		await model.updateTask(taskid, csrftoken, state);
 	}
 	// Refresh the tables
 	model.refreshState();
