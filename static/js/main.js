@@ -11,9 +11,6 @@ const allTasks = async () => {
 	// Get tasks for User
 	await model.getTasks(username);
 
-	//! Testing
-	console.log(model.state);
-
 	// render view In-Progress
 	TodoView.render(model.state.inProgressTasks, "IP");
 	// render view Pending
@@ -28,9 +25,6 @@ const addTask = async () => {
 	// In case of empty string
 	if (!todoTitle) return;
 
-	//! Test
-	console.log(todoTitle);
-
 	// Send Data to Django API
 	await model.createTask(todoTitle, username, csrftoken);
 
@@ -43,7 +37,6 @@ const addTask = async () => {
 };
 
 const updateTask = async (taskid, state) => {
-	console.log(taskid + " " + state);
 	if (!taskid) return;
 	// Call function from model based on operation
 	if (state === "D") {

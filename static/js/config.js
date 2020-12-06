@@ -23,7 +23,6 @@ export const sendAJAX = async function (method, url, csrf, data) {
 		}
 		let dataResponse;
 		if (method !== "DELETE") dataResponse = await res.json();
-		console.log(dataResponse);
 		return dataResponse;
 	} catch (error) {
 		throw error;
