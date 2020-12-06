@@ -88,13 +88,37 @@ export const deleteTask = async function (id, csrf) {
 	}
 };
 
-export const updateTask = function (id, title, username, csrf) {
-	// Data object
-	const todoItem = {
-		id: id,
-		title: title,
-		state: "IP",
-		tag: "Important",
-		user: username,
-	};
+export const updateTask = async function (id, username, csrf, state) {
+	let task;
+	try {
+		// Get task details via GET AJAX call
+		const data = await config.sendAJAX(
+			"GET",
+			`${url}/task_list/${username}/${id}`
+		);
+		// Create task object based on GET call and updated task state
+		task = {
+			id: data[0].id,
+			title: data[0].title,
+			state: state,
+			tag: data[0].tag,
+		};
+	} catch (error) {
+		console.log(`updateTask_GET ${error} 💢💢`);
+		throw error;
+	}
+
+	try {
+		// Send updated object to Update API
+		const data = await config.sendAJAX(
+			"POST",
+			`${url}/task_update/`,
+			csrf,
+			task
+		);
+		return data;
+	} catch (error) {
+		console.log(`updateTask_POST ${error} 💢💢`);
+		throw error;
+	}
 };

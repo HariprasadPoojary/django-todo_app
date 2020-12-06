@@ -88,7 +88,6 @@ class TodoView {
 
 	#clear() {
 		this.#currentElement.innerHTML = "";
-		console.log("Table cleared " + this.#currentElement);
 	}
 	#generateMarkup(data, state) {
 		let markup = "";

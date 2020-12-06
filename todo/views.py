@@ -25,6 +25,7 @@ def task_list(request, custid, format=None):
         tasks = Todo.objects.filter(user_id=int(custid))
     except Todo.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
     serializer = TodoSerializer(tasks, many=True)
     return Response(serializer.data)
 
