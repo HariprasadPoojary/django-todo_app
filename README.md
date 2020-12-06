@@ -3,7 +3,7 @@
 DJango and DJango REST Framework based todo app
 A todo web application written with the goal of learning how to use DJango and DJango REST Framework as a Backend and HTML, CSS and JavaScript as Frontend
 
-### Features:
+## Features:
 * Login
 * Sign up
 * Sessions
@@ -13,7 +13,7 @@ A todo web application written with the goal of learning how to use DJango and D
 * Removing todos
 * Updating status
 
-### Screen shots:
+## Screen shots:
 
 #### Login
 
