@@ -8,4 +8,4 @@ A todo web application written with the goal of learning how to use DJango and D
 
 #### Login
 
-https://raw.githubusercontent.com/HariprasadPoojary/django-todo_app/master/static/image/login.png
+![Image]https://raw.githubusercontent.com/HariprasadPoojary/django-todo_app/master/static/image/login.png
