@@ -105,18 +105,19 @@ a {
 }
 
 .box-tasks-data {
-	// box-shadow: $table-shadow;
-	height: 13rem;
-	overflow: auto;
-	display: block;
+	height: 33vh;
+	// width: 33rem;
+	overflow-y: auto;
+	display: inline-block;
 	background-color: transparent;
 	// Status Dropdown
 	tbody {
 		.drop-option {
+			position: relative;
+			padding-right: 3rem;
 			ul {
 				display: none;
 				background-color: #fcbf49;
-				box-shadow: $table-shadow;
 				li {
 					list-style: none;
 					display: inline-block;
@@ -134,7 +135,7 @@ a {
 			&:hover {
 				cursor: pointer;
 				ul {
-					display: block;
+					display: inline-block;
 					position: absolute;
 					li {
 						display: block;
@@ -144,15 +145,15 @@ a {
 		}
 		// Style
 		tr:nth-child(odd) {
-			background-color: #a8dadc;
+			background-color: $table-row-odd;
 		}
 		tr:nth-child(even) {
-			background-color: #f1faee;
+			background-color: $table-row-even;
 		}
 	}
 	thead {
 		th {
-			background-color: #457b9d;
+			background-color: $table-heading;
 		}
 	}
 }
@@ -161,7 +162,7 @@ a {
 .task-name {
 	width: 20rem;
 	&:hover {
-		color: #e63946;
+		color: $table-delete-btn;
 	}
 }
 
