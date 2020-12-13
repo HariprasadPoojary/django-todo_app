@@ -3,6 +3,9 @@
 DJango and DJango REST Framework based todo app
 A todo web application written with the goal of learning how to use DJango and DJango REST Framework as a Backend and HTML, CSS, JavaScript as Frontend
 
+## Go check it out 👇🏽
+### https://hari-todo-app.herokuapp.com/
+
 ## Features:
 * Login
 * Sign up
