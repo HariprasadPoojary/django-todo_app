@@ -1,7 +1,7 @@
 "use strict";
 import * as config from "./config.js";
 
-const url = "http://127.0.0.1:8000/api";
+const url = "https://hari-todo-app.herokuapp.com/api";
 
 export let state = {
 	tasks: [],
