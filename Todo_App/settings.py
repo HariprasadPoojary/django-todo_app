@@ -26,7 +26,7 @@ SECRET_KEY = "s^92uagb8d!77&qahv7=safx%0s(l%mj9xlkz=$=dc7as%c^$="
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["hari-todo-app.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["hari-todo-app.herokuapp.com", "localhost"]
 
 
 # Application definition

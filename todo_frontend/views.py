@@ -55,7 +55,7 @@ def signup_page(request):
             username = form.cleaned_data.get("username")
 
             # Get user group - customer
-            group = Group.objects.get("customer")
+            group = Group.objects.get(name="customer")
             # Assign this user to customer group
             user.groups.add(group)
 
