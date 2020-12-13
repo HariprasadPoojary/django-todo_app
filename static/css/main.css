@@ -253,7 +253,6 @@ a {
 
 .box-tasks-data tbody .drop-option {
   position: relative;
-  padding-right: 3rem;
 }
 
 .box-tasks-data tbody .drop-option ul {
@@ -326,6 +325,8 @@ a {
 
 .task-delete {
   border-color: transparent;
+  padding-right: 2rem;
+  text-align: center;
 }
 
 .task-delete:hover {

@@ -106,7 +106,6 @@ a {
 
 .box-tasks-data {
 	height: 33vh;
-	// width: 33rem;
 	overflow-y: auto;
 	display: inline-block;
 	background-color: transparent;
@@ -114,7 +113,7 @@ a {
 	tbody {
 		.drop-option {
 			position: relative;
-			padding-right: 3rem;
+
 			ul {
 				display: none;
 				background-color: #fcbf49;
@@ -182,6 +181,8 @@ a {
 // Delete button
 .task-delete {
 	border-color: transparent;
+	padding-right: 2rem;
+	text-align: center;
 	&:hover {
 		background-color: #d62828;
 	}
